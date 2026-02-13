@@ -1,46 +1,47 @@
 // 1 - Bibliotecas/ imports
-import org.junit.Test;
+//import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.Before;
-import org.junit.After;
-import static org.junit.Assert.*;
+// import org.junit.Before;
+// import org.junit.After;
+// import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.IsNot.not;
+// import static org.hamcrest.core.IsNot.not;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver; //biblioteca principal do Selenium
-import org.openqa.selenium.firefox.FirefoxDriver;
+// import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver; //biblioteca principal do ChromeDriver
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import java.util.*;
-import java.net.MalformedURLException;
-import java.net.URL;
+// import org.openqa.selenium.remote.RemoteWebDriver;
+// import org.openqa.selenium.remote.DesiredCapabilities;
+// import org.openqa.selenium.Dimension;
+// import org.openqa.selenium.WebElement;
+// import org.openqa.selenium.interactions.Actions;
+// import org.openqa.selenium.support.ui.ExpectedConditions;
+// import org.openqa.selenium.support.ui.WebDriverWait;
+// import org.openqa.selenium.JavascriptExecutor;
+// import org.openqa.selenium.Alert;
+// import org.openqa.selenium.Keys;
+// import java.util.*;
+// import java.net.MalformedURLException;
+// import java.net.URL;
 
 // 2 - Classe 
 public class SaucedemoTest {
 // 2.1 - Atributos
   private WebDriver driver; // objeto do Selenium
-  private Map<String, Object> vars;
-  private JavascriptExecutor js;
+  // private Map<String, Object> vars;
+  // private JavascriptExecutor js;
 
-// 2.2 - Funções e Métodos
+// 2.2 - Funï¿½ï¿½es e Mï¿½todos
 // Antes do Teste
   @BeforeEach
   public void iniciar() {
     driver = new ChromeDriver(); // instanciar o objeto do Selenimum como ChromeDriver
     driver.manage().window().maximize(); // maximiza a janela do navegador
-    js = (JavascriptExecutor) driver;
-    vars = new HashMap<String, Object>();
+    //js = (JavascriptExecutor) driver;
+    //vars = new HashMap<String, Object>();
   }
   // Depois do Teste
   @AfterEach
@@ -49,7 +50,7 @@ public class SaucedemoTest {
   }
   //Teste
   @Test
-  public void SaucedemoTest() {
+  public void saucedemoTest() {
     driver.get("https://www.saucedemo.com/");
     driver.findElement(By.cssSelector("*[data-test=\"username\"]")).click();
     driver.findElement(By.cssSelector("*[data-test=\"username\"]")).sendKeys("standard_user");
