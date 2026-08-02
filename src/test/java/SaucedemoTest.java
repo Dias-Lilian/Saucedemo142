@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static java.lang.Thread.sleep;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.By;
+import java.util.Map;
 import org.openqa.selenium.WebDriver; //biblioteca principal do Selenium
 import org.openqa.selenium.chrome.ChromeDriver; //biblioteca principal do ChromeDriver
 
@@ -21,9 +22,10 @@ public class SaucedemoTest {
   @BeforeEach
   public void iniciar() {
     ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-save-password-bubble");
-        options.addArguments("--disable-password-manager-reauthentication");
-        options.addArguments("--disable-features=PasswordLeakDetection");
+      options.setExperimentalOption("prefs", Map.of("profile.password_manager_leak_detection", false, "credentials_enable_service", false));
+      options.addArguments("--disable-save-password-bubble");
+      options.addArguments("--disable-password-manager-reauthentication");
+      options.addArguments("--disable-features=PasswordLeakDetection");
     driver = new ChromeDriver(options); // instanciar o objeto do Selenimum como ChromeDriver
     driver.manage().window().maximize(); // maximiza a janela do navegador
   }
@@ -42,11 +44,11 @@ public class SaucedemoTest {
     driver.findElement(By.cssSelector("*[data-test=\"username\"]")).sendKeys("standard_user");
     driver.findElement(By.cssSelector("*[data-test=\"password\"]")).sendKeys("secret_sauce");
     driver.findElement(By.cssSelector("*[data-test=\"login-button\"]")).click();
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     driver.findElement(By.cssSelector("*[data-test=\"add-to-cart-sauce-labs-backpack\"]")).click();
     driver.findElement(By.cssSelector("*[data-test=\"shopping-cart-link\"]")).click();
     driver.findElement(By.cssSelector("*[data-test=\"checkout\"]")).click();
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     driver.findElement(By.cssSelector("*[data-test=\"firstName\"]")).click();
     driver.findElement(By.cssSelector("*[data-test=\"firstName\"]")).sendKeys("Lilian");
     driver.findElement(By.cssSelector("*[data-test=\"lastName\"]")).sendKeys("Dias");
@@ -58,8 +60,9 @@ public class SaucedemoTest {
     assertEquals(driver.findElement(By.cssSelector("*[data-test=\"inventory-item-name\"]")).getText(), "Sauce Labs Backpack");
     driver.findElement(By.cssSelector(".item_pricebar")).click();
     assertEquals(driver.findElement(By.cssSelector("*[data-test=\"inventory-item-price\"]")).getText(), "$29.99");
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     driver.findElement(By.cssSelector("*[data-test=\"finish\"]")).click();
     driver.findElement(By.cssSelector("*[data-test=\"back-to-products\"]")).click();
+    Thread.sleep(2000);
   }
 }
